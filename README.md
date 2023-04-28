@@ -50,8 +50,7 @@ Create a function name as playRound() with parameter playerSelection and compute
 Create a function name as game()
     for variable playChance with number 5, if playChance more than 0, playChance -1
         Create a new variable name userInput and will get input from the user. 
-        The input only can contain rock, scissor and paper with case-insensitive
-        If don`t provide the correct string, 
+        While input not equal to rock, scissor or paper
             display "Please only provide the input 'rock','scissor' and 'paper'!!!"
             ask user to provide the input again
         run the function playRound(), the argument will be variable userInput and function getComputerChoice()
