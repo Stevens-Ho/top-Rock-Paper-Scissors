@@ -10,3 +10,6 @@ function getComputerChoice() {
         return "scissor";
     }
 }
+
+let computerWin = 0;
+let userWin = 0;
