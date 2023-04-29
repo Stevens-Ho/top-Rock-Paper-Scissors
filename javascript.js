@@ -73,3 +73,5 @@ function winOrLose(timesOfComputerWin, timesOfUserWin){
         console.log("This game is tie, please play again to win the game!!!");
     }
 }
+game();
+winOrLose(computerWin, userWin);
