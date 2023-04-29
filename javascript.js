@@ -51,3 +51,13 @@ function playRound(playerSelection, computerSelection) {
         console.log("It's a tie"); 
     }
 }
+
+function game() {
+    for (let playChance = 5; playChance > 0; playChance--) {
+        let userInput = "";
+        while(userInput !== "rock" && userInput !== "paper" && userInput !== "scissor"){
+          userInput = prompt("Please only provide the word 'rock', 'paper' or 'scissor'");
+        }
+        playRound(userInput, getComputerChoice())
+    } 
+}
