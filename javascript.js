@@ -61,3 +61,15 @@ function game() {
         playRound(userInput, getComputerChoice())
     } 
 }
+
+function winOrLose(timesOfComputerWin, timesOfUserWin){
+    if (timesOfComputerWin > timesOfUserWin) {
+        console.log("Unfortunately, you lose the game!!!");
+    }
+    else if (timesOfUserWin > timesOfComputerWin) {
+        console.log("Congratulation, you win the game!!!");
+    }
+    else if (timesOfUserWin === timesOfComputerWin) {
+        console.log("This game is tie, please play again to win the game!!!");
+    }
+}
