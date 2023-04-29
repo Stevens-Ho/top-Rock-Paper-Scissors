@@ -55,8 +55,12 @@ Create a function name as game()
             ask user to provide the input again
         run the function playRound(), the argument will be variable userInput and function getComputerChoice()
 
-run the function game()
-If computerWin more than userWin
-    display "Unfortunately, you lose the game!!!"
-Else if computerWin more than userWin
-    display "Congratulation, you win the game!!!"
+Create a function name as function winOrLose() with parameter timesOfComputerWin and timesOfUserWin
+    If timesOfComputerWin more than timesOfUserWin
+        display "Unfortunately, you lose the game!!!"
+    Else if timesOfUserWin more than timesOfComputerWin
+        display "Congratulation, you win the game!!!"
+    Else if timesOfUserWin equal to timesOfComputerWin
+        display "This game is tie, please play again to win the game!!!"
+
+run the function game() and winOrLose()
