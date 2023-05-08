@@ -12,7 +12,6 @@ function getComputerChoice() {
 }
 
 function displayResult(resultContent) {
-    let div = document.querySelector("div");
     let result = document.querySelector(".result");
     result.textContent = resultContent;
 }
