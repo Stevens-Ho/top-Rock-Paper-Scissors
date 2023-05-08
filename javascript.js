@@ -64,4 +64,12 @@ function winOrLose(timesOfComputerWin, timesOfUserWin){
     }
 }
 
+const rock = document.querySelector(".rock");
+const scissor = document.querySelector(".scissor");
+const paper = document.querySelector(".paper");
+
+rock.addEventListener("click", () => playRound("rock", getComputerChoice()));
+paper.addEventListener("click", () => playRound("paper", getComputerChoice()));
+scissor.addEventListener("click", () => playRound("scissor", getComputerChoice()));
+
 winOrLose(computerWin, userWin);
