@@ -52,16 +52,6 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    for (let playChance = 5; playChance > 0; playChance--) {
-        let userInput = "";
-        while(userInput !== "rock" && userInput !== "paper" && userInput !== "scissor"){
-          userInput = prompt("Please only provide the word 'rock', 'paper' or 'scissor'");
-        }
-        playRound(userInput, getComputerChoice())
-    } 
-}
-
 function winOrLose(timesOfComputerWin, timesOfUserWin){
     if (timesOfComputerWin > timesOfUserWin) {
         console.log("Unfortunately, you lose the game!!!");
@@ -73,5 +63,5 @@ function winOrLose(timesOfComputerWin, timesOfUserWin){
         console.log("This game is tie, please play again to win the game!!!");
     }
 }
-game();
+
 winOrLose(computerWin, userWin);
