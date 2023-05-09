@@ -18,43 +18,59 @@ function displayResult(resultContent) {
 
 let computerWin = 0;
 let userWin = 0;
+
+function displayScore(score) {
+    let playerScore = document.querySelector(".playerScore");
+    let computerScore = document.querySelector(".computerScore");
+    if (score === "computer") {
+        computerWin++;
+    } else if (score === "user") {
+        userWin++;  
+    }
+    computerScore.textContent = computerWin;
+    playerScore.textContent = userWin;
+}
+
 function playRound(playerSelection, computerSelection) {
     //lose
     if (playerSelection === "rock" && computerSelection === "paper") {
         document.create
         displayResult("You Lose! Paper beats Rock");
-        computerWin++;
+        displayScore("computer");
     }
     else if (playerSelection === "paper" && computerSelection === "scissor") {
         displayResult("You Lose! Scissor beats Paper");  
-        computerWin++;
+        displayScore("computer");
     }
     else if (playerSelection === "scissor" && computerSelection === "rock") {
         displayResult("You Lose! Rock beats Scissor");
-        computerWin++;
+        displayScore("computer");
     }
     //win
     else if (playerSelection === "paper" && computerSelection === "rock") {
         displayResult("You Win! Paper beats Rock");
-        userWin++;
+        displayScore("user");
     }
     else if (playerSelection === "rock" && computerSelection === "scissor") {
         displayResult("You Win! Rock beats Scissor");
-        userWin++;
+        displayScore("user");
     }
     else if (playerSelection === "scissor" && computerSelection === "paper") {
         displayResult("You Win! Scissor beats Paper");
-        userWin++;
+        displayScore("user");
     }
     //tie
     else if (playerSelection === "scissor" && computerSelection === "scissor") {
         displayResult("It's a tie");
+        displayScore();
     }
     else if (playerSelection === "paper" && computerSelection === "paper") {
         displayResult("It's a tie"); 
+        displayScore();
     }
     else if (playerSelection === "rock" && computerSelection === "rock") {
         displayResult("It's a tie"); 
+        displayScore();
     }
 }
 
