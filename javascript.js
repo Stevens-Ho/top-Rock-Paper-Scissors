@@ -37,52 +37,65 @@ function playRound(playerSelection, computerSelection) {
         document.create
         displayResult("You Lose! Paper beats Rock");
         displayScore("computer");
+        winOrLose(computerWin, userWin);
     }
     else if (playerSelection === "paper" && computerSelection === "scissor") {
         displayResult("You Lose! Scissor beats Paper");  
         displayScore("computer");
+        winOrLose(computerWin, userWin);
     }
     else if (playerSelection === "scissor" && computerSelection === "rock") {
         displayResult("You Lose! Rock beats Scissor");
         displayScore("computer");
+        winOrLose(computerWin, userWin);
     }
     //win
     else if (playerSelection === "paper" && computerSelection === "rock") {
         displayResult("You Win! Paper beats Rock");
         displayScore("user");
+        winOrLose(computerWin, userWin);
     }
     else if (playerSelection === "rock" && computerSelection === "scissor") {
         displayResult("You Win! Rock beats Scissor");
         displayScore("user");
+        winOrLose(computerWin, userWin);
     }
     else if (playerSelection === "scissor" && computerSelection === "paper") {
         displayResult("You Win! Scissor beats Paper");
         displayScore("user");
+        winOrLose(computerWin, userWin);
     }
     //tie
     else if (playerSelection === "scissor" && computerSelection === "scissor") {
         displayResult("It's a tie");
         displayScore();
+        winOrLose(computerWin, userWin);
     }
     else if (playerSelection === "paper" && computerSelection === "paper") {
         displayResult("It's a tie"); 
         displayScore();
+        winOrLose(computerWin, userWin);
     }
     else if (playerSelection === "rock" && computerSelection === "rock") {
         displayResult("It's a tie"); 
         displayScore();
+        winOrLose(computerWin, userWin);
     }
 }
 
+//Will announce the winner after one player get 5 score.
+let gameWinner = document.querySelector(".gameWinner")
 function winOrLose(timesOfComputerWin, timesOfUserWin){
-    if (timesOfComputerWin > timesOfUserWin) {
-        console.log("Unfortunately, you lose the game!!!");
-    }
-    else if (timesOfUserWin > timesOfComputerWin) {
-        console.log("Congratulation, you win the game!!!");
-    }
-    else if (timesOfUserWin === timesOfComputerWin) {
-        console.log("This game is tie, please play again to win the game!!!");
+    if (timesOfComputerWin >= 5 || timesOfUserWin >= 5) {
+        if (timesOfComputerWin > timesOfUserWin) {
+            gameWinner.textContent = "Unfortunately, you lose the game!!!";
+        }
+        else if (timesOfUserWin > timesOfComputerWin) {
+            gameWinner.textContent = "Congratulation, you win the game!!!";
+        }
+        else if (timesOfUserWin === timesOfComputerWin) {
+            gameWinner.textContent = "This game is tie, please play again to win the game!!!";
+        }
     }
 }
 
