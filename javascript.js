@@ -86,6 +86,7 @@ function playRound(playerSelection, computerSelection) {
 let gameWinner = document.querySelector(".gameWinner")
 function winOrLose(timesOfComputerWin, timesOfUserWin){
     if (timesOfComputerWin >= 5 || timesOfUserWin >= 5) {
+        stopButtonFunction();
         if (timesOfComputerWin > timesOfUserWin) {
             gameWinner.textContent = "Unfortunately, you lose the game!!!";
         }
@@ -115,6 +116,12 @@ function addScissorButtonFunction() {
 rock.addEventListener("click", addRockButtonFunction);
 paper.addEventListener("click", addPaperButtonFunction);
 scissor.addEventListener("click", addScissorButtonFunction);
+
+function stopButtonFunction() {
+    rock.removeEventListener("click", addRockButtonFunction);
+    paper.removeEventListener("click", addPaperButtonFunction);
+    scissor.removeEventListener("click", addScissorButtonFunction);
+}
 
 const replay = document.querySelector(".playAgain");
 replay.addEventListener("click", () => location.reload());
