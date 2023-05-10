@@ -34,7 +34,6 @@ function displayScore(score) {
 function playRound(playerSelection, computerSelection) {
     //lose
     if (playerSelection === "rock" && computerSelection === "paper") {
-        document.create
         displayResult("You Lose! Paper beats Rock");
         displayScore("computer");
         winOrLose(computerWin, userWin);
