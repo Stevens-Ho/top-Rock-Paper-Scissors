@@ -102,9 +102,19 @@ const rock = document.querySelector(".rock");
 const scissor = document.querySelector(".scissor");
 const paper = document.querySelector(".paper");
 
-rock.addEventListener("click", () => playRound("rock", getComputerChoice()));
-paper.addEventListener("click", () => playRound("paper", getComputerChoice()));
-scissor.addEventListener("click", () => playRound("scissor", getComputerChoice()));
+function addRockButtonFunction() {
+    playRound("rock", getComputerChoice());
+}
+function addPaperButtonFunction() {
+    playRound("paper", getComputerChoice());
+}
+function addScissorButtonFunction() {
+    playRound("scissor", getComputerChoice());
+}
+
+rock.addEventListener("click", addRockButtonFunction);
+paper.addEventListener("click", addPaperButtonFunction);
+scissor.addEventListener("click", addScissorButtonFunction);
 
 const replay = document.querySelector(".playAgain");
 replay.addEventListener("click", () => location.reload());
