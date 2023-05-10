@@ -106,4 +106,6 @@ rock.addEventListener("click", () => playRound("rock", getComputerChoice()));
 paper.addEventListener("click", () => playRound("paper", getComputerChoice()));
 scissor.addEventListener("click", () => playRound("scissor", getComputerChoice()));
 
+const replay = document.querySelector(".playAgain");
+replay.addEventListener("click", () => location.reload());
 winOrLose(computerWin, userWin);
