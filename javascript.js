@@ -50,11 +50,7 @@ function playRound(playerSelection, computerSelection) {
         winOrLose(computerWin, userWin);
     }
     //tie
-    else if (
-        (playerSelection === "scissor" && computerSelection === "scissor") ||
-        (playerSelection === "paper" && computerSelection === "paper") ||
-        (playerSelection === "rock" && computerSelection === "rock")
-        ) {
+    else if (playerSelection === computerSelection)  {
         result.textContent = "It's a tie";
         winOrLose(computerWin, userWin);
     }
