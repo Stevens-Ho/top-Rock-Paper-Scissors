@@ -30,50 +30,32 @@ function addScore(score) {
 
 function playRound(playerSelection, computerSelection) {
     //lose
-    if (playerSelection === "rock" && computerSelection === "paper") {
+    if (
+        (playerSelection === "rock" && computerSelection === "paper") ||
+        (playerSelection === "paper" && computerSelection === "scissor") ||
+        (playerSelection === "scissor" && computerSelection === "rock")
+        ) {
         result.textContent = "You Lose! Paper beats Rock";
         addScore("computer");
         winOrLose(computerWin, userWin);
     }
-    else if (playerSelection === "paper" && computerSelection === "scissor") {
-        result.textContent = "You Lose! Scissor beats Paper";  
-        addScore("computer");
-        winOrLose(computerWin, userWin);
-    }
-    else if (playerSelection === "scissor" && computerSelection === "rock") {
-        result.textContent = "You Lose! Rock beats Scissor";
-        addScore("computer");
-        winOrLose(computerWin, userWin);
-    }
     //win
-    else if (playerSelection === "paper" && computerSelection === "rock") {
+    else if (
+        (playerSelection === "paper" && computerSelection === "rock") ||
+        (playerSelection === "rock" && computerSelection === "scissor") ||
+        (playerSelection === "scissor" && computerSelection === "paper")
+     ) {
         result.textContent = "You Win! Paper beats Rock";
         addScore("user");
         winOrLose(computerWin, userWin);
     }
-    else if (playerSelection === "rock" && computerSelection === "scissor") {
-        result.textContent = "You Win! Rock beats Scissor";
-        addScore("user");
-        winOrLose(computerWin, userWin);
-    }
-    else if (playerSelection === "scissor" && computerSelection === "paper") {
-        result.textContent = "You Win! Scissor beats Paper";
-        addScore("user");
-        winOrLose(computerWin, userWin);
-    }
     //tie
-    else if (playerSelection === "scissor" && computerSelection === "scissor") {
+    else if (
+        (playerSelection === "scissor" && computerSelection === "scissor") ||
+        (playerSelection === "paper" && computerSelection === "paper") ||
+        (playerSelection === "rock" && computerSelection === "rock")
+        ) {
         result.textContent = "It's a tie";
-        addScore();
-        winOrLose(computerWin, userWin);
-    }
-    else if (playerSelection === "paper" && computerSelection === "paper") {
-        result.textContent = "It's a tie"; 
-        addScore();
-        winOrLose(computerWin, userWin);
-    }
-    else if (playerSelection === "rock" && computerSelection === "rock") {
-        result.textContent = "It's a tie"; 
         addScore();
         winOrLose(computerWin, userWin);
     }
