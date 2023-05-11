@@ -86,7 +86,7 @@ function playRound(playerSelection, computerSelection) {
 let gameWinner = document.querySelector(".gameWinner")
 function winOrLose(timesOfComputerWin, timesOfUserWin){
     if (timesOfComputerWin >= 5 || timesOfUserWin >= 5) {
-        stopButtonFunction();
+        stopGames();
         if (timesOfComputerWin > timesOfUserWin) {
             gameWinner.textContent = "Unfortunately, you lose the game!!!";
         }
@@ -117,7 +117,7 @@ rock.addEventListener("click", addRockButtonFunction);
 paper.addEventListener("click", addPaperButtonFunction);
 scissor.addEventListener("click", addScissorButtonFunction);
 
-function stopButtonFunction() {
+function stopGames() {
     rock.removeEventListener("click", addRockButtonFunction);
     paper.removeEventListener("click", addPaperButtonFunction);
     scissor.removeEventListener("click", addScissorButtonFunction);
