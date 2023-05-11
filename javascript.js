@@ -16,7 +16,7 @@ let result = document.querySelector(".result");
 let computerWin = 0;
 let userWin = 0;
 
-function displayScore(score) {
+function addScore(score) {
     let playerScore = document.querySelector(".playerScore");
     let computerScore = document.querySelector(".computerScore");
     if (score === "computer") {
@@ -32,49 +32,49 @@ function playRound(playerSelection, computerSelection) {
     //lose
     if (playerSelection === "rock" && computerSelection === "paper") {
         result.textContent = "You Lose! Paper beats Rock";
-        displayScore("computer");
+        addScore("computer");
         winOrLose(computerWin, userWin);
     }
     else if (playerSelection === "paper" && computerSelection === "scissor") {
         result.textContent = "You Lose! Scissor beats Paper";  
-        displayScore("computer");
+        addScore("computer");
         winOrLose(computerWin, userWin);
     }
     else if (playerSelection === "scissor" && computerSelection === "rock") {
         result.textContent = "You Lose! Rock beats Scissor";
-        displayScore("computer");
+        addScore("computer");
         winOrLose(computerWin, userWin);
     }
     //win
     else if (playerSelection === "paper" && computerSelection === "rock") {
         result.textContent = "You Win! Paper beats Rock";
-        displayScore("user");
+        addScore("user");
         winOrLose(computerWin, userWin);
     }
     else if (playerSelection === "rock" && computerSelection === "scissor") {
         result.textContent = "You Win! Rock beats Scissor";
-        displayScore("user");
+        addScore("user");
         winOrLose(computerWin, userWin);
     }
     else if (playerSelection === "scissor" && computerSelection === "paper") {
         result.textContent = "You Win! Scissor beats Paper";
-        displayScore("user");
+        addScore("user");
         winOrLose(computerWin, userWin);
     }
     //tie
     else if (playerSelection === "scissor" && computerSelection === "scissor") {
         result.textContent = "It's a tie";
-        displayScore();
+        addScore();
         winOrLose(computerWin, userWin);
     }
     else if (playerSelection === "paper" && computerSelection === "paper") {
         result.textContent = "It's a tie"; 
-        displayScore();
+        addScore();
         winOrLose(computerWin, userWin);
     }
     else if (playerSelection === "rock" && computerSelection === "rock") {
         result.textContent = "It's a tie"; 
-        displayScore();
+        addScore();
         winOrLose(computerWin, userWin);
     }
 }
