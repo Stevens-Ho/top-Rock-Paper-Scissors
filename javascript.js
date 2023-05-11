@@ -87,6 +87,7 @@ let gameWinner = document.querySelector(".gameWinner")
 function winOrLose(timesOfComputerWin, timesOfUserWin){
     if (timesOfComputerWin >= 5 || timesOfUserWin >= 5) {
         stopGames();
+        showPlayAgainButton();
         if (timesOfComputerWin > timesOfUserWin) {
             gameWinner.textContent = "Unfortunately, you lose the game!!!";
         }
@@ -125,4 +126,7 @@ function stopGames() {
 
 const replay = document.querySelector(".playAgain");
 replay.addEventListener("click", () => location.reload());
+function showPlayAgainButton() {
+    replay.removeAttribute("hidden");
+}
 winOrLose(computerWin, userWin);
