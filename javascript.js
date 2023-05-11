@@ -56,7 +56,6 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === "rock" && computerSelection === "rock")
         ) {
         result.textContent = "It's a tie";
-        addScore();
         winOrLose(computerWin, userWin);
     }
 }
