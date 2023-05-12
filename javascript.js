@@ -1,31 +1,28 @@
-function getComputerChoice() {
-    let number = Math.floor(Math.random()*3);
-    if (number === 0) {
-        return "rock";
-    }
-    else if (number === 1) {
-        return "paper";
-    }
-    else if (number === 2) {
-        return "scissor";
-    }
+const result = document.querySelector(".result");
+const playerScore = document.querySelector(".playerScore");
+const computerScore = document.querySelector(".computerScore");
+const gameWinner = document.querySelector(".gameWinner");
+const replay = document.querySelector(".playAgain");
+const playerSelection = document.querySelectorAll(".playerSelection");
+replay.addEventListener("click", () => location.reload());
+let computerWin = 0;
+let playerWin = 0;
+
+playerSelection.forEach(button => { 
+    button.addEventListener('click', getSelected) 
+});
+
+function getSelected(e) {
+    let playerChoice = e.target.id;
+    playRound(playerChoice, getComputerChoice());
+    finishGame();
 }
 
-let result = document.querySelector(".result");
-
-let computerWin = 0;
-let userWin = 0;
-
-function addScore(score) {
-    let playerScore = document.querySelector(".playerScore");
-    let computerScore = document.querySelector(".computerScore");
-    if (score === "computer") {
-        computerWin++;
-    } else if (score === "user") {
-        userWin++;  
-    }
-    computerScore.textContent = computerWin;
-    playerScore.textContent = userWin;
+function getComputerChoice() {
+    const number = Math.floor(Math.random()*3);
+    if (number === 0) return "rock";
+    else if (number === 1) return "paper";
+    else if (number === 2) return "scissor";
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -36,8 +33,8 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === "scissor" && computerSelection === "rock")
         ) {
         result.textContent = "You Lose! Paper beats Rock";
-        addScore("computer");
-        winOrLose(computerWin, userWin);
+        computerWin++;
+        updateScore();
     }
     //win
     else if (
@@ -46,61 +43,43 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === "scissor" && computerSelection === "paper")
      ) {
         result.textContent = "You Win! Paper beats Rock";
-        addScore("user");
-        winOrLose(computerWin, userWin);
+        playerWin++;
+        updateScore();
     }
     //tie
     else if (playerSelection === computerSelection)  {
         result.textContent = "It's a tie";
-        winOrLose(computerWin, userWin);
+        updateScore();
     }
 }
 
-//Will announce the winner after one player get 5 score.
-let gameWinner = document.querySelector(".gameWinner")
-function winOrLose(timesOfComputerWin, timesOfUserWin){
-    if (timesOfComputerWin >= 5 || timesOfUserWin >= 5) {
-        stopGames();
+function updateScore() {
+    computerScore.textContent = `Computer Score: ${computerWin}`;
+    playerScore.textContent = `Player Score: ${playerWin}`;
+}
+
+function finishGame() {
+    if (computerWin === 5 || playerWin=== 5) {
+        finishGameText();
         showPlayAgainButton();
-        if (timesOfComputerWin > timesOfUserWin) {
-            gameWinner.textContent = "Unfortunately, you lose the game!!!";
-        }
-        else if (timesOfUserWin > timesOfComputerWin) {
-            gameWinner.textContent = "Congratulation, you win the game!!!";
-        }
-        else if (timesOfUserWin === timesOfComputerWin) {
-            gameWinner.textContent = "This game is tie, please play again to win the game!!!";
-        }
+        stopButtonSelection();
     }
 }
 
-const rock = document.querySelector(".rock");
-const scissor = document.querySelector(".scissor");
-const paper = document.querySelector(".paper");
-
-function addRockButtonFunction() {
-    playRound("rock", getComputerChoice());
-}
-function addPaperButtonFunction() {
-    playRound("paper", getComputerChoice());
-}
-function addScissorButtonFunction() {
-    playRound("scissor", getComputerChoice());
+function finishGameText() {
+    if (playerWin === 5) {
+        gameWinner.textContent = "Congratulation, you win the game!!!";
+    } else {
+        gameWinner.textContent = "Unfortunately, you lose the game!!!";
+    }
 }
 
-rock.addEventListener("click", addRockButtonFunction);
-paper.addEventListener("click", addPaperButtonFunction);
-scissor.addEventListener("click", addScissorButtonFunction);
-
-function stopGames() {
-    rock.removeEventListener("click", addRockButtonFunction);
-    paper.removeEventListener("click", addPaperButtonFunction);
-    scissor.removeEventListener("click", addScissorButtonFunction);
+function stopButtonSelection() {
+    playerSelection.forEach(select => {
+        select.removeEventListener("click", getSelected)
+    })
 }
 
-const replay = document.querySelector(".playAgain");
-replay.addEventListener("click", () => location.reload());
 function showPlayAgainButton() {
     replay.removeAttribute("hidden");
 }
-winOrLose(computerWin, userWin);
