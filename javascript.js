@@ -2,9 +2,10 @@ const result = document.querySelector(".result");
 const playerScore = document.querySelector(".playerScore");
 const computerScore = document.querySelector(".computerScore");
 const gameWinner = document.querySelector(".gameWinner");
-const replay = document.querySelector(".playAgain");
+const playAgain = document.querySelector(".playAgain");
+const centerBox = document.querySelector(".centerBox");
 const playerSelection = document.querySelectorAll(".playerSelection");
-replay.addEventListener("click", () => location.reload());
+playAgain.addEventListener("click", () => location.reload());
 let computerWin = 0;
 let playerWin = 0;
 
@@ -61,7 +62,7 @@ function updateScore() {
 function finishGame() {
     if (computerWin === 5 || playerWin=== 5) {
         finishGameText();
-        showPlayAgainButton();
+        showHiddenElement();
         stopButtonSelection();
     }
 }
@@ -80,6 +81,7 @@ function stopButtonSelection() {
     })
 }
 
-function showPlayAgainButton() {
-    replay.removeAttribute("hidden");
+function showHiddenElement() {
+    centerBox.removeAttribute("hidden");
+    
 }
