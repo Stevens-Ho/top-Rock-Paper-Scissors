@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    font-size: large;
+}
+
+.centerBox {
+    background-color: lightgrey;
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    padding: 30px;
+    z-index: 1;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.playAgain {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
