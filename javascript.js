@@ -56,7 +56,7 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === "paper" && computerSelection === "scissor") ||
         (playerSelection === "scissor" && computerSelection === "rock")
         ) {
-        result.textContent = "You Lose! Paper beats Rock";
+        result.textContent = `You Lose! ${computerSelection} beats ${playerSelection}`;
         computerWin++;
         updateScore();
         changeColorLoseRound();
@@ -67,7 +67,7 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === "rock" && computerSelection === "scissor") ||
         (playerSelection === "scissor" && computerSelection === "paper")
      ) {
-        result.textContent = `You Win! Paper beats Rock`;
+        result.textContent = `You Win! ${playerSelection} beats ${computerSelection}`;
         playerWin++;
         updateScore();
         changeColorWinRound();
