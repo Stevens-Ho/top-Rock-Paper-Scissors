@@ -1,24 +1,27 @@
-const result = document.querySelector(".result");
-const playerScore = document.querySelector(".playerScore");
 const computerScore = document.querySelector(".computerScore");
 const gameWinner = document.querySelector(".gameWinner");
-const playAgain = document.querySelector(".playAgain");
-const centerBox = document.querySelector(".centerBox");
 const playerSelection = document.querySelectorAll(".playerSelection");
-playAgain.addEventListener("click", () => location.reload());
 let computerWin = 0;
 let playerWin = 0;
 
 playerSelection.forEach(button => { 
-    button.addEventListener('click', getSelected) 
+    button.addEventListener('click', getSelected);
 });
 
-let playerChoice = "rockpaperscissor";
+let playerChoice = "rockPaperScissor";
 function getSelected(e) {
     playerChoice = e.target.id;
     playRound(playerChoice, getComputerChoice());
     addSelectionImage("player", playerChoice);
     finishGame();
+}
+
+function addSelectionImage(player, selection) {
+    if (player === "player") {
+        document.getElementById("playerSelectImage").src=`image/${selection}.png`;
+    } else {
+        document.getElementById("computerSelectImage").src=`image/${selection}.png`;
+    }
 }
 
 function getComputerChoice() {
@@ -39,7 +42,14 @@ function getComputerChoice() {
     }
 }
 
+function updateScore() {
+    const playerScore = document.querySelector(".playerScore");
+    computerScore.textContent = computerWin;
+    playerScore.textContent = playerWin;
+}
+
 function playRound(playerSelection, computerSelection) {
+    const result = document.querySelector(".result");
     //lose
     if (
         (playerSelection === "rock" && computerSelection === "paper") ||
@@ -57,7 +67,7 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === "rock" && computerSelection === "scissor") ||
         (playerSelection === "scissor" && computerSelection === "paper")
      ) {
-        result.textContent = "You Win! Paper beats Rock";
+        result.textContent = `You Win! Paper beats Rock`;
         playerWin++;
         updateScore();
         changeColorWinRound();
@@ -70,39 +80,32 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-let resultContainer = document.querySelector(".resultContainer");
-let playerBackgroundColor = document.querySelector(".playerBackgroundColor");
-let computerBackgroundColor = document.querySelector(".computerBackgroundColor");
-
+const resultContainer = document.querySelector(".resultContainer");
+const playerBackgroundColor = document.querySelector(".playerBackgroundColor");
+const computerBackgroundColor = document.querySelector(".computerBackgroundColor");
 //Change the color when playing the game
 function changeColorWinRound() {
         resultContainer.style.backgroundColor = "green";
         playerBackgroundColor.style.backgroundColor = "green";
         computerBackgroundColor.style.backgroundColor = "red";
 }
-
 function changeColorLoseRound() {
         resultContainer.style.backgroundColor = "red";
         playerBackgroundColor.style.backgroundColor = "red";
         computerBackgroundColor.style.backgroundColor = "green";
 }
-
 function changeColorTieRound() {
         resultContainer.style.backgroundColor = "blue";
         playerBackgroundColor.style.backgroundColor = "blue";
         computerBackgroundColor.style.backgroundColor = "blue";
 }
 
-function updateScore() {
-    computerScore.textContent = computerWin;
-    playerScore.textContent = playerWin;
-}
-
 function finishGame() {
     if (computerWin === 5 || playerWin=== 5) {
         finishGameText();
         showHiddenElement();
-        stopButtonSelectionFunction();
+        stopBtnSelectionFunction();
+        playAgainBtn();
     }
 }
 
@@ -114,52 +117,51 @@ function finishGameText() {
     }
 }
 
-function stopButtonSelectionFunction() {
+
+function showHiddenElement() {
+    const centerBox = document.querySelector(".centerBox");
+    centerBox.removeAttribute("hidden");
+}
+
+function stopBtnSelectionFunction() {
     playerSelection.forEach(select => {
         select.removeEventListener("click", getSelected);
     })
     removeHoverEffect();
 }
 
-function showHiddenElement() {
-    centerBox.removeAttribute("hidden");
-    
+function removeHoverEffect() {
+    const hover = document.querySelectorAll("button.playerSelection");
+    hover.forEach(hoverButton => {
+        hoverButton.classList.remove("playerSelection");
+    });
+    playerSelection.forEach(button => { 
+        button.removeEventListener('mouseover', mouseOverSelection); 
+    });
 }
 
-function addSelectionImage(player, selection) {
-    if (player === "player") {
-        document.getElementById("playerSelectImage").src=`image/${selection}.png`;
-    } else {
-        document.getElementById("computerSelectImage").src=`image/${selection}.png`;
-    }
+function playAgainBtn() {
+    const playAgain = document.querySelector(".playAgain");
+    playAgain.addEventListener("click", () => location.reload());
 }
 
 playerSelection.forEach(button => { 
-    button.addEventListener('mouseover', mouseOverSelection) 
+    button.addEventListener('mouseover', mouseOverSelection); 
 });
 
 function mouseOverSelection(selection) {
-    let mouseOver = selection.target.id;
-    document.getElementById("playerSelectImage").src=`image/${mouseOver}.png`
+    const mouseOver = selection.target.id;
+    setTimeout(() => {
+        document.getElementById("playerSelectImage").src=`image/${mouseOver}.png`;
+    }, 200);
 };
 
 playerSelection.forEach(button => { 
-    button.addEventListener('mouseleave', mouseLeaveSelection) 
+    button.addEventListener('mouseleave', mouseLeaveSelection);
 });
 
 function mouseLeaveSelection() {
     setTimeout(() => {
         document.getElementById("playerSelectImage").src=`image/${playerChoice}.png`;
-    }, 200)
-};
-
-//remove hover effect
-let hover = document.querySelectorAll("button.playerSelection");
-function removeHoverEffect() {
-    hover.forEach(hoverButton => {
-        hoverButton.classList.remove("playerSelection")
-    });
-    playerSelection.forEach(button => { 
-        button.removeEventListener('mouseover', mouseOverSelection) 
-    });
+    }, 200);
 }
