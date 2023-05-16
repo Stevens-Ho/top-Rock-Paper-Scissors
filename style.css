@@ -3,19 +3,94 @@
     font-size: large;
 }
 
+body {
+    text-align: center;
+    background-color: rgb(241, 241, 241);
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+.score {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 130px;
+    margin-bottom: 30px;
+}
+
+.imgContainer {
+    border: 3px solid black;
+    width: 260px;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgb(118, 196, 223);
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+}
+
+.selectionContainer {
+    height: 100px;
+}
+
+.resultContainer {
+    background-color: rgb(118, 196, 223);
+    width: 450px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result {
+    font-size: 1.5rem;
+}
+
 .centerBox {
     background-color: lightgrey;
     position: absolute;
-    top: 35%;
-    left: 40%;
-    padding: 30px;
-    z-index: 1;
-    border-radius: 10px;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 150px;
+    width: 500px;
+    padding: 25px 30px;
     text-align: center;
+    border-radius: 10px;
 }
 
-.playAgain {
-    padding: 15px;
-    margin-top: 20px;
+.gameWinner {
+    font-size: 1.5rem;
+    top: 50%;
+}
+
+button {
+    padding: 10px 30px;
+    margin: 20px 50px;
     border-radius: 10px;
+    border: 2px solid black;
+}
+
+.playerSelection:hover, .playAgain:hover {
+    cursor: pointer;
+    transform: translate(-5px, -5px);
+    box-shadow: 5px 5px gray;
+    font-weight: 900;
+    border: 3px solid black;
+}
+
+strong {
+    font-size: 1.5rem;
+    font-weight: 700;
 }

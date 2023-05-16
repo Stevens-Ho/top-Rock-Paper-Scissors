@@ -8,15 +8,28 @@
         <script src="javascript.js" defer></script>
     </head>
     <body>
-        <div>
+        <h1>Rock, Paper, Scissor</h1>
+        <div class="score center">
+            <div>
+                <div class="imgContainer playerBackgroundColor">
+                    <img src="image/rockpaperscissor.png" alt="playerSelect" id="playerSelectImage" class="image">
+                </div>
+                <div>Player Score: <strong class="playerScore">0</strong></div>
+            </div>
+            <div>
+                <div class="imgContainer computerBackgroundColor">
+                    <img src="image/secret.png" alt="computerSelect" id="computerSelectImage" class="image">
+                </div>
+                <div>Computer Score: <strong class="computerScore">0</strong></div>
+            </div>
+        </div>
+        <div class="selectionContainer">
             <button id="scissor" class="playerSelection">Scissor</button>
             <button id="paper" class="playerSelection">paper</button>
             <button id="rock" class="playerSelection">rock</button>
         </div>
-        <div class="result"></div>
-        <div class="score">
-            <div class="playerScore">Player Score: 0</div>
-            <div class="computerScore">Computer Score: 0</div>
+        <div class="resultContainer">
+            <div class="result"></div>
         </div>
         <div class="centerBox" hidden>
             <div class="gameWinner"></div>
