@@ -1,9 +1,7 @@
-const computerScore = document.querySelector(".computerScore");
-const gameWinner = document.querySelector(".gameWinner");
-const playerSelection = document.querySelectorAll(".playerSelection");
 let computerWin = 0;
 let playerWin = 0;
 
+const playerSelection = document.querySelectorAll(".playerSelection");
 playerSelection.forEach(button => { 
     button.addEventListener('click', getSelected);
 });
@@ -14,38 +12,6 @@ function getSelected(e) {
     playRound(playerChoice, getComputerChoice());
     addSelectionImage("player", playerChoice);
     finishGame();
-}
-
-function addSelectionImage(player, selection) {
-    if (player === "player") {
-        document.getElementById("playerSelectImage").src=`image/${selection}.png`;
-    } else {
-        document.getElementById("computerSelectImage").src=`image/${selection}.png`;
-    }
-}
-
-function getComputerChoice() {
-    const number = Math.floor(Math.random()*3);
-    if (number === 0) {
-        addSelectionImage("computer", "rock");
-        return "rock";
-    }
-    
-    else if (number === 1) {
-        addSelectionImage("computer", "paper");
-        return "paper";
-    }
-    
-    else if (number === 2) {
-        addSelectionImage("computer", "scissor");
-        return "scissor";
-    }
-}
-
-function updateScore() {
-    const playerScore = document.querySelector(".playerScore");
-    computerScore.textContent = computerWin;
-    playerScore.textContent = playerWin;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -80,24 +46,37 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const resultContainer = document.querySelector(".resultContainer");
-const playerBackgroundColor = document.querySelector(".playerBackgroundColor");
-const computerBackgroundColor = document.querySelector(".computerBackgroundColor");
-//Change the color when playing the game
-function changeColorWinRound() {
-        resultContainer.style.backgroundColor = "green";
-        playerBackgroundColor.style.backgroundColor = "green";
-        computerBackgroundColor.style.backgroundColor = "red";
+function getComputerChoice() {
+    const number = Math.floor(Math.random()*3);
+    if (number === 0) {
+        addSelectionImage("computer", "rock");
+        return "rock";
+    }
+    
+    else if (number === 1) {
+        addSelectionImage("computer", "paper");
+        return "paper";
+    }
+    
+    else if (number === 2) {
+        addSelectionImage("computer", "scissor");
+        return "scissor";
+    }
 }
-function changeColorLoseRound() {
-        resultContainer.style.backgroundColor = "red";
-        playerBackgroundColor.style.backgroundColor = "red";
-        computerBackgroundColor.style.backgroundColor = "green";
+
+function updateScore() {
+    const computerScore = document.querySelector(".computerScore");
+    const playerScore = document.querySelector(".playerScore");
+    computerScore.textContent = computerWin;
+    playerScore.textContent = playerWin;
 }
-function changeColorTieRound() {
-        resultContainer.style.backgroundColor = "blue";
-        playerBackgroundColor.style.backgroundColor = "blue";
-        computerBackgroundColor.style.backgroundColor = "blue";
+
+function addSelectionImage(player, selection) {
+    if (player === "player") {
+        document.getElementById("playerSelectImage").src=`image/${selection}.png`;
+    } else {
+        document.getElementById("computerSelectImage").src=`image/${selection}.png`;
+    }
 }
 
 function finishGame() {
@@ -110,13 +89,13 @@ function finishGame() {
 }
 
 function finishGameText() {
+    const gameWinner = document.querySelector(".gameWinner");
     if (playerWin === 5) {
         gameWinner.textContent = "Congratulation, you win the game!!!";
     } else {
         gameWinner.textContent = "Unfortunately, you lose the game!!!";
     }
 }
-
 
 function showHiddenElement() {
     const centerBox = document.querySelector(".centerBox");
@@ -138,6 +117,26 @@ function removeHoverEffect() {
     playerSelection.forEach(button => { 
         button.removeEventListener('mouseover', mouseOverSelection); 
     });
+}
+
+const resultContainer = document.querySelector(".resultContainer");
+const playerBackgroundColor = document.querySelector(".playerBackgroundColor");
+const computerBackgroundColor = document.querySelector(".computerBackgroundColor");
+//Change the color when playing the game
+function changeColorWinRound() {
+        resultContainer.style.backgroundColor = "green";
+        playerBackgroundColor.style.backgroundColor = "green";
+        computerBackgroundColor.style.backgroundColor = "red";
+}
+function changeColorLoseRound() {
+        resultContainer.style.backgroundColor = "red";
+        playerBackgroundColor.style.backgroundColor = "red";
+        computerBackgroundColor.style.backgroundColor = "green";
+}
+function changeColorTieRound() {
+        resultContainer.style.backgroundColor = "blue";
+        playerBackgroundColor.style.backgroundColor = "blue";
+        computerBackgroundColor.style.backgroundColor = "blue";
 }
 
 function playAgainBtn() {
